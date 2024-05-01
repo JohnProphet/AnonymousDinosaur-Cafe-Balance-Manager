@@ -58,8 +58,10 @@
             <tr th:each="stu, stuStat : ${studentList}">
                 <td th:text="${stuStat.index + 1}"></td>
                 <td th:text="${stu.firstName} + ' ' + ${stu.lastName}"></td>
-                <td th:text="${stu.cafeteriaBalance}"></td>
-<!--                <td th:text="${#numbers.formatCurrency(stu.cafeteriaBalance, 'USD')}"></td>-->
+                <td th:text="${#numbers.formatCurrency(stu.cafeteriaBalance)}" th:style="${stu.cafeteriaBalance < 20.0} ? 'color: red;' : ''"></td>
+                <!--                <td th:text="${stu.cafeteriaBalance}"></td>-->
+<!--                <td th:text="${stu.cafeteriaBalance}" th:style="${stu.cafeteriaBalance < 20.0} ? 'color: red;' : ''"></td>-->
+<!--<td th:text="${#numbers.formatCurrency(stu.cafeteriaBalance, 'USD')}"></td>-->
 <!--                <td th:text="|${currency} ${#numbers.formatCurrency(stu.cafeteriaBalance, 1, 'POINT', 2, 'COMMA')}|"></td>-->
                 <td>
                     <a th:href=" @{/payment/addfunds(studentId=${stu.studentId})}"
